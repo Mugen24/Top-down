@@ -72,6 +72,6 @@ public class ShieldStatusManager : MonoBehaviour
         Debug.Log(col.gameObject.name);
         CalHP(-1);
         
-        playerRef.GetComponent<StatusManager>().CollisionDetected(gameObject);
+        //playerRef.GetComponent<StatusManager>().CollisionDetected(gameObject);
     }
 }

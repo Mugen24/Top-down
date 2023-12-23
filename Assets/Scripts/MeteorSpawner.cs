@@ -67,4 +67,10 @@ public class MeteorSpawner : MonoBehaviour
         // Convert screen position to world position
         return Camera.main.ScreenToWorldPoint(new Vector3(x, y, 0));
     }
+
+    void SetSpeedMultiplier(float speedMultiplier) {
+        Debug.Log("Setting multiplier");
+        Meteor.speedMultiplier = speedMultiplier;
+    }
+
 }

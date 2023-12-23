@@ -62,9 +62,12 @@
     <Compile Include="Assets\Scripts\MeteorSpawner.cs" />
     <Compile Include="Assets\Scripts\ShieldStatusManager.cs" />
     <Compile Include="Assets\Scripts\Meteor.cs" />
+    <Compile Include="Assets\Scripts\Dash.cs" />
     <Compile Include="Assets\Scripts\PlayerStatusManager.cs" />
+    <Compile Include="Assets\Scripts\Skill.cs" />
+    <Compile Include="Assets\Scripts\BindingController.cs" />
+    <Compile Include="Assets\Scripts\SkillMeteor.cs" />
     <Compile Include="Assets\Scripts\ShieldBehaviour.cs" />
-    <Compile Include="Assets\Dash.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
   <ItemGroup>

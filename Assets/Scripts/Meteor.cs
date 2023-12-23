@@ -5,6 +5,10 @@ public class Meteor : MonoBehaviour
     public float initialSpeed = 2f;
     public float maxSpeed = 5f;
     public float acceleration = 0.05f;
+
+    //Shares variable across all Meteor objects 
+    public static float speedMultiplier = 1f;
+
     public GameObject player; // Reference to the player's spaceship
 
     private Rigidbody2D rb;
@@ -37,13 +41,14 @@ public class Meteor : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(speedMultiplier);
         // Accelerate the meteor over time
         if (currentSpeed < maxSpeed)
         {
             currentSpeed += acceleration * Time.deltaTime;
         }
 
-        rb.velocity = moveDirection * currentSpeed;
+        rb.velocity = moveDirection * currentSpeed * speedMultiplier;
 
         //Destroy if offscreen
         if (!IsVisibleFromCamera())

@@ -13,13 +13,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Color[] colors = { Color.white, Color.red, Color.blue };
 
-    //Dashing variables
-    private bool isDashable = true;
-    private bool _isDashing = false;
-    private float dashMultiplier = 30f;
-    private float _dashTimeSecond = 0.2f;
-    private float dashCoolDownSecond = 3f;
-
+    public bool blockControl;
 
     void Start()
     {
@@ -36,10 +30,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_isDashing) { return; }
-        if (Input.GetKey(KeyCode.E)) {
-            StartCoroutine(Dash());
-        }
+        //Prevent player from moving while other actions is in progres
+        if (blockControl) { return; }
+        //Debug.Log(blockControl);
         MoveAndRotatePlayer();
     }
 
@@ -76,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.color = newColor;
     }
 
-    private IEnumerator Dash() {
+/*
+    public IEnumerator SkillDash() {
         if (!isDashable) { yield break; }
 
         isDashable = false;
@@ -93,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     
     }
+*/
 
 }
 
