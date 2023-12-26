@@ -5,8 +5,16 @@ using System.Threading.Tasks;
 
 public class StatusManager : MonoBehaviour
 {
-    private int health = 10;
+    private int MAXHEALTH = 10;
+    private int health;
     private int exp = 10;
+
+    public void SetMaxHealth(int maxHealth) { MAXHEALTH = maxHealth; }
+    public int GetMaxHealth() { return MAXHEALTH; }
+
+    public void Start() {
+        health = MAXHEALTH;
+    }
 
     public int CalHP(int healthDelta)
     { 

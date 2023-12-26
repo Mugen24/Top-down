@@ -1,12 +1,25 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class MeteorSpawner : MonoBehaviour
 {
     public GameObject meteorPrefab;
     public float initialSpawnRate = 2f;
-    public GameObject MeteorList;
+    public List<GameObject> meteorList = new List<GameObject>();
     private float spawnRate;
     private float nextSpawnTime = 0f;
+    private bool _pauseSpawn;
+    private float _spawnRateMultiplier = 0.1f;
+
+    public void PauseSpawn() { 
+        _pauseSpawn = true;
+    }
+
+    public void IncreaseSpawnRate(float rate)
+    {
+        _spawnRateMultiplier = rate;
+    }
+
 
     void Start()
     {
@@ -15,13 +28,15 @@ public class MeteorSpawner : MonoBehaviour
 
     void Update()
     {
+        if (_pauseSpawn) { return; }
+        
         if (Time.time >= nextSpawnTime)
         {
             SpawnMeteor();
             nextSpawnTime = Time.time + 1f / spawnRate;
 
             // Increase spawn rate over time
-            spawnRate += Time.deltaTime * 0.1f; // Adjust the rate of increase as needed
+            spawnRate += Time.deltaTime * _spawnRateMultiplier; // Adjust the rate of increase as needed
         }
     }
 
@@ -37,6 +52,9 @@ public class MeteorSpawner : MonoBehaviour
             Color[] colors = { Color.white, Color.blue, Color.red };
             sr.color = colors[Random.Range(0, colors.Length)];
         }
+
+        meteorList.Add(newMeteor);
+        
     }
 
     Vector2 GetRandomSpawnPosition()
